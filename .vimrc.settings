@@ -1,0 +1,186 @@
+let g:ascii = [
+\ '      #  #       #####',
+\ '      #  #       #    #',
+\ '      #  #       #    #',
+\ '      #  #       #    #',
+\ ' #    #  #       #    #',
+\ '  ####   ######  #####',
+\]
+
+" NerdTree
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeWinSize=33
+let NERDTreeQuitOnOpen=0
+let NERDTreeShowHidden=1
+autocmd VimEnter * wincmd l
+autocmd BufNew   * wincmd l
+
+" airline
+let laststatus=2
+let g:airline_theme="molokai"
+
+" jsdoc
+
+" easymotion
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+" indent_guides
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+set ts=2 sw=2 et
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 0
+
+" floaterm
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+
+" Floaterm
+let g:floaterm_autoclose=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+
+" " ack
+" if executable('ag')
+"   let g:ackprg = "ag -H --nocolor --nogroup --column --vimgrep"
+" endif
+" cnoreabbrev ag Ack
+" cnoreabbrev aG Ack
+" cnoreabbrev AG Ack
+" cnoreabbrev Ag Ack
+
+" Buffer explorer
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+
+" vim-devicons
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
+
+" glyph-palette
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
+
+"
+" startify
+"
+let g:startify_custom_header = g:ascii + startify#fortune#boxed()
+
+map <leader>o :Startify<cr>
+let g:startify_files_number = 15
+let g:startify_lists = [
+\ { 'type': 'files',     'header': ['   Files']                        },
+\ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
+\ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+\ ]
+
+let g:startify_bookmarks = [
+\ { 's': '~/.vim/.vimrc.settings' },
+\ { 'b': '~/.vim/.vimrc.bundle' },
+\ { 'v': '~/.vimrc' },
+\ { 'z': '~/.zshrc' },
+\ { 'l': '~/lesson'},
+\ ]
+
+let g:startify_enable_special = 0
+
+let g:startify_custom_footer =
+\ ['', "   jld", '']
+
+" vim-closetag
+let g:closetag_filenames = '*.html, *.xhtml, *.phtml, *.erb'
+" let g:closetag_filetypes = 'html, xhtml, phtml'
+
+" tagalong
+let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'javascriptreact', 'typescriptreact']
+
+" far.vim
+let g:far#enable_undo=1
+
+if filereadable(expand("~/.vim/.coc.vim"))
+  source ~/.vim/.coc.vim
+endif
+"
+" ----------------------------------------
+" key bindings
+" ----------------------------------------
+" NerdTree
+map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>e :NERDTreeFind<CR>
+
+" easyemotion
+map <Leader> <Plug>(easymotion-prefix)
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+" Gif config
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+
+" buffer explorer
+nmap <leader>n :BufExplorer<CR>
+map <leader>mt :MBEToggle<cr>
+map <leader>bd :MBEbd<cr>
+
+" easy_align
+vnoremap <silent> <Enter> :EasyAlign<cr>
+
+" copy paste
+vmap <C-c> "+y
+map <C-a> ggVG
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" quit
+map <C-q> :q<cr>
+map <leader>q :q<cr>
+
+" tab
+noremap <C-t> :tabnew split<CR>
+
+" save
+map <leader>w :w<CR>
+cmap w!! w !sudo tee >/dev/null %
+inoremap <C-s> <ESC>:w<CR>
+nnoremap <C-s> :w<CR>
+
+"
+" 移动
+"
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Wrapped lines goes down/up to next row, rather than next line in file.
+nnoremap j gj
+nnoremap k gk
+
+" Highlight word at cursor without changing position
+nnoremap <leader>v *<C-O>
+
+nmap <silent> ,/ :let @/ = ""<CR>
+
+map <C-r> :!ruby %<cr>
+
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>

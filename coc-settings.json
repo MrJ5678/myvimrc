@@ -1,0 +1,18 @@
+{
+  // coc
+  "suggest.timeout": 10000,
+  "coc.preferences.formatOnSave": true,
+  // coc-tsserver
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  // coc-emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact",
+    "eruby": "html"
+  },
+  // coc-snippets
+  "snippets.extends": {
+    "javascriptreact": ["javascript", "typescript"],
+    "typescript": ["javascript"]
+  }
+}

@@ -1,0 +1,72 @@
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
+Plug 'lambdalisue/glyph-palette.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-rooter'
+Plug 'liuchengxu/vim-which-key'
+
+"
+" tpope
+"
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
+" Readline style insertion
+Plug 'junegunn/vim-easy-align'
+Plug 'ntpeters/vim-better-whitespace'
+
+" %
+Plug 'andymass/vim-matchup'
+Plug 'tomtom/tcomment_vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mg979/vim-visual-multi'
+Plug 'easymotion/vim-easymotion'
+Plug 'brooth/far.vim'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" buffer
+Plug 'jlanzarotta/bufexplorer'
+Plug 'fholgado/minibufexpl.vim'
+
+" terminal in vim
+Plug 'voldikss/vim-floaterm'
+
+" Asynchronous build and test dispatcher
+Plug 'tpope/vim-dispatch'
+
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+
+Plug 'dhruvasagar/vim-open-url'
+
+" colorschema
+Plug 'crusoexia/vim-monokai'
+Plug 'tomasr/molokai'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" language
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise'
+
+Plug 'sheerun/vim-polyglot'
+
+Plug 'alvan/vim-closetag'
+Plug 'AndrewRadev/tagalong.vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" css
+Plug 'ap/vim-css-color'
+
+" snippets
+Plug 'honza/vim-snippets'
